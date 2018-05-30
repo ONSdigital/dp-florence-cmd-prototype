@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../scss/index.scss';
+import { Link } from "react-router-dom";
 
 export default class DatasetList extends Component {
     constructor(props) {
@@ -31,7 +32,7 @@ export default class DatasetList extends Component {
             filteredDatasets: []
         }
 
-        this.handleSearch = this.handleSearch.bind(this);
+        this.handleSearch = this.handleSearch.bind(this)
 
     }
 
@@ -62,7 +63,7 @@ export default class DatasetList extends Component {
                         {datasets.map((dataset, index) => {
                             return (
                                 <li key={index} className="menu-list__item">
-                                    <h2><a href="/hello">{dataset.name}</a></h2>
+                                    <h2><Link to={`/dataset-options`}>{dataset.name}</Link></h2>
                                     <p>{dataset.lastUpdated}</p>
                                 </li>
                             )
