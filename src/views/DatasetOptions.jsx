@@ -8,7 +8,7 @@ export default class DatasetOptions extends Component {
             <div className="grid grid--justify-center">
                 <div className="grid__col-xs-10 grid__col-md-8 grid__col-lg-6">
                     <div className="margin-top--2">
-                        &#9664; <Link to="/" className="btn btn--link">Back</Link>
+                        &#9664; <Link to="/datasets" className="btn btn--link">Back</Link>
                     </div>
                     <h1 className="margin-top--1 margin-bottom--1">Select a task</h1>
                     <p className="margin-bottom--1">Dataset:</p>
