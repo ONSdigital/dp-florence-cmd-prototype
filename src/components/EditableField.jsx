@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../scss/index.scss';
 
-export default class DatasetMetadata extends Component {
+export default class EditableField extends Component {
     constructor(props) {
         super(props)
 
@@ -20,7 +20,7 @@ export default class DatasetMetadata extends Component {
     }
 
     handleSaveClick() {
-        this.props.handleSaveClick(this.props.id, this.props.group, this.props.index);
+        this.props.handleSaveClick(this.props.id, this.props.group, this.props.index, this.state.value);
     }
 
     handleInputChange(event) {
@@ -42,6 +42,7 @@ export default class DatasetMetadata extends Component {
                     onChange={this.handleInputChange}
                     value={this.state.value}
                     readOnly={!this.props.is_being_edited}
+                    style={{"position": "relative", "top": "-13px"}}
                 />
                 </div>
                 <div className="grid__col-lg-1">
