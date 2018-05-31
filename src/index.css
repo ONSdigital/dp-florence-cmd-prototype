@@ -2781,3 +2781,7 @@ details {
   border-bottom: 3px solid grey;
   height: 70vh;
 }
+
+.font-color--iron{
+  color:#D0D2D3;
+}
