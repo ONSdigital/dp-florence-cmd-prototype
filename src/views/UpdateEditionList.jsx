@@ -10,7 +10,7 @@ export default class NewEditionList extends Component {
                     <div className="margin-top--2">
                         &#9664; <Link to="/dataset-options" className="btn btn--link">Back</Link>
                     </div>
-                    <h1 className="margin-top--1 margin-bottom--1">Select edition</h1>
+                    <h1 className="margin-top--1 margin-bottom--1">Select old edition</h1>
                     <p className="margin-bottom--1">Dataset:</p>
                     <div>
                     <details className=" margin-bottom--1" >
@@ -20,8 +20,16 @@ export default class NewEditionList extends Component {
                     </div>
                     <ul className="menu-list">
                         <li className="menu-list__item">
-                            <h2><Link to="/new-edition">June 2018 edition</Link></h2>
-                            <p>Never released <span className="font-color--iron">|</span> Updated today at 8:44am</p>
+                            <h2><Link to="/new-edition">May 2018 edition</Link></h2>
+                            <p>Released on 16 May 2018</p>
+                        </li>
+                        <li className="menu-list__item">
+                            <h2><Link to="/new-edition">April 2018 edition</Link></h2>
+                            <p>Released on 15 April 2018</p>
+                        </li>
+                        <li className="menu-list__item">
+                            <h2><Link to="/new-edition">March 2018 edition</Link></h2>
+                            <p>Released on 17 March 2018</p>
                         </li>
                     </ul>
                 </div>

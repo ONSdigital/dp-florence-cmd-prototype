@@ -10,6 +10,7 @@ import NavBar from './global/Navbar';
 import DatasetList from './views/DatasetList';
 import DatasetOptions from './views/DatasetOptions';
 import NewEditionList from './views/NewEditionList';
+import UpdateEditionList from './views/UpdateEditionList';
 import DatasetMetadata from './views/DatasetMetadata';
 import Collection from './views/Collection';
 
@@ -25,6 +26,7 @@ ReactDOM.render((
                 <Route exact path={`/datasets`} component={DatasetList} />
                 <Route exact path={`/dataset-options`} component={DatasetOptions} />
                 <Route exact path={`/publish-version`} component={NewEditionList} />
+                <Route exact path={`/update-version`} component={UpdateEditionList} />
                 <Route exact path={`/dataset-metadata`} component={DatasetMetadata} />
                 <Route exact path={`/preview`} component={Preview} />
             </span>
