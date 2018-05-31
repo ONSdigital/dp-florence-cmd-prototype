@@ -10,6 +10,7 @@ import NavBar from './global/Navbar';
 import DatasetList from './views/DatasetList';
 import DatasetOptions from './views/DatasetOptions';
 import DatasetMetadata from './views/DatasetMetadata';
+import Collection from './views/Collection';
 
 //ReactDOM.render(<Preview />, document.getElementById('root'));
 
@@ -18,7 +19,9 @@ ReactDOM.render((
         <NavBar />
         <Router>
             <span>
-                <Route exact path={`/`} component={DatasetList} />
+                <Route exact path={`/`} component={Collection} />
+                <Route exact path={`/collections`} component={Collection} />
+                <Route exact path={`/datasets`} component={DatasetList} />
                 <Route exact path={`/dataset-options`} component={DatasetOptions} />
                 <Route exact path={`/dataset-metadata`} component={DatasetMetadata} />
                 <Route exact path={`/preview`} component={Preview} />
