@@ -9,7 +9,7 @@ class Preview extends Component {
             <div className="grid grid--justify-center">
                 <div className="grid__col-xs-10 grid__col-md-8 grid__col-lg-6">
                     <div className="margin-top--2">
-                        &#9664; <Link to="/dataset-metadata" type="button" className="btn btn--link">Back</Link>
+                        &#9664; <a onClick={this.props.history.goBack} className="btn btn--link">Back</a>
                     </div>
                     <h1 className="margin-top--1 margin-bottom--1">Preview</h1>
                 </div>
@@ -19,7 +19,7 @@ class Preview extends Component {
                 <div className="grid__col-xs-10 grid__col-md-8 grid__col-lg-6">
                     <div className="margin-top--1">
                         <button type="submit" className="btn btn--primary margin-bottom--1" >Save</button>
-                        <span className="margin-left--1"><a href="/Florence.html" id="submit-for-review" className="btn btn--positive">Save and submit for review</a></span>
+                        <span className="margin-left--1"><a href="/Collections" id="submit-for-review" className="btn btn--positive">Save and submit for review</a></span>
                     </div>
                 </div>
             </div>
