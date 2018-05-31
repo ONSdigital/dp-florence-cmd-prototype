@@ -9,6 +9,7 @@ import registerServiceWorker from './registerServiceWorker';
 import NavBar from './global/Navbar';
 import DatasetList from './views/DatasetList';
 import DatasetOptions from './views/DatasetOptions';
+import NewEditionList from './views/NewEditionList';
 import DatasetMetadata from './views/DatasetMetadata';
 
 //ReactDOM.render(<Preview />, document.getElementById('root'));
@@ -20,6 +21,7 @@ ReactDOM.render((
             <span>
                 <Route exact path={`/`} component={DatasetList} />
                 <Route exact path={`/dataset-options`} component={DatasetOptions} />
+                <Route exact path={`/publish-version`} component={NewEditionList} />
                 <Route exact path={`/dataset-metadata`} component={DatasetMetadata} />
                 <Route exact path={`/preview`} component={Preview} />
             </span>
