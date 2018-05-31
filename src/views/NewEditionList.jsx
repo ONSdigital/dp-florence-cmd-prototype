@@ -12,6 +12,12 @@ export default class NewEditionList extends Component {
                     </div>
                     <h1 className="margin-top--1 margin-bottom--1">Select edition</h1>
                     <p className="margin-bottom--1">Dataset:</p>
+                    <div>
+                    <details className=" margin-bottom--1" >
+                        <summary>What is this page?</summary>
+                        <p>test</p>
+                    </details>
+                    </div>
                     <ul className="menu-list">
                         <li className="menu-list__item">
                             <h2><Link to="/new-edition">June 2018 edition</Link></h2>
