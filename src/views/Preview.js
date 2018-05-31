@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../scss/index.scss';
+import { Link } from "react-router-dom";
 
 class Preview extends Component {
   render() {
@@ -8,7 +9,7 @@ class Preview extends Component {
             <div className="grid grid--justify-center">
                 <div className="grid__col-xs-10 grid__col-md-8 grid__col-lg-6">
                     <div className="margin-top--2">
-                        &#9664; <button type="button" className="btn btn--link">Back</button>
+                        &#9664; <Link to="/dataset-metadata" type="button" className="btn btn--link">Back</Link>
                     </div>
                     <h1 className="margin-top--1 margin-bottom--1">Preview</h1>
                 </div>
