@@ -19,7 +19,7 @@ class Preview extends Component {
                 <div className="grid__col-xs-10 grid__col-md-8 grid__col-lg-6">
                     <div className="margin-top--1">
                         <button type="submit" className="btn btn--primary margin-bottom--1" >Save</button>
-                        <span className="margin-left--1"><a href="http://google.com" id="submit-for-review" className="btn btn--positive">Save and submit for review</a></span>
+                        <span className="margin-left--1"><a href="/Florence.html" id="submit-for-review" className="btn btn--positive">Save and submit for review</a></span>
                     </div>
                 </div>
             </div>
