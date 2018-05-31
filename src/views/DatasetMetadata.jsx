@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import '../scss/index.scss';
 import { Link } from "react-router-dom";
 import EditableField from "../components/EditableField"
+import EditableModalField from "../components/EditableModalField"
+import Modal from "../components/Modal"
+import EditableModal from "../components/EditableModal"
 
 export default class DatasetMetadata extends Component {
     constructor(props) {
@@ -72,10 +75,33 @@ export default class DatasetMetadata extends Component {
                     field_is_being_edited: false
                 },
             ],
+            related_links: [
+                {
+                    field_id: "11",
+                    field_type: "Bulletin",
+                    field_value: "Consumer price inflation, UK: April 2018",
+                    field_uri: "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/april2018",
+                    field_is_being_edited: false
+                },
+                {
+                    field_id: "12",
+                    field_type: "Dataset",
+                    field_value: "Consumer price inflation time series",
+                    field_uri: "https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceindices",
+                    field_is_being_edited: false
+                },
+            ],
+            content_to_edit: {},
+            showModal: false
         }
 
         this.handleEditClick = this.handleEditClick.bind(this);
         this.handleSaveClick = this.handleSaveClick.bind(this);
+        this.handleCreateClick = this.handleCreateClick.bind(this);
+        this.handleDeleteClick = this.handleDeleteClick.bind(this);
+        this.handleModalEditClick = this.handleModalEditClick.bind(this);
+        this.handleModalCancelClick = this.handleModalCancelClick.bind(this);
+        this.handleModalSaveClick = this.handleModalSaveClick.bind(this);
     }
 
     handleEditClick(id, group, index) {
@@ -86,8 +112,9 @@ export default class DatasetMetadata extends Component {
         const newState = this.state[group]
         newState.splice(index, 1, field);
         this.setState({
-            metadata: newState
-        })
+            [group]: newState,
+
+        });
     }
 
     handleSaveClick(id, group, index, newValue) {
@@ -96,10 +123,76 @@ export default class DatasetMetadata extends Component {
         })
         field.field_is_being_edited = false;
         field.field_value = newValue;
+        const newState = this.state[group];
+        newState.splice(index, 1, field);
+        this.setState({
+            [group]: newState
+        })
+    }
+
+    handleCreateClick() {
+        this.setState({
+            showModal: true
+        })
+    }
+
+    handleModalEditClick(id, group, index) {
+        const field = this.state[group].find(field => {
+            return field.field_id === id
+        })
+        field.field_is_being_edited = true;
         const newState = this.state[group]
         newState.splice(index, 1, field);
         this.setState({
-            metadata: newState
+            [group]: newState,
+            content_to_edit: {index: index, ...field},
+            showModal: true
+        });
+    }
+
+    handleModalSaveClick(group, type, value, uri, isEditing) {
+        let newState;
+        if (!isEditing.field_id) {
+            const id = (this.state.metadata.length + this.state.contact_details.length + this.state.related_links.length + 1).toString();
+            const newItem = {
+                field_id: id,
+                field_type: type,
+                field_value: value,
+                field_uri: uri,
+                field_is_being_edited: false
+            }
+            newState = [...this.state[group]];
+            newState.push(newItem);
+        } else {
+            const field = this.state[group].find(field => {
+                return field.field_id === isEditing.field_id
+            })
+            field.field_is_being_edited = false;
+            field.field_type = type;
+            field.field_value = value;
+            field.field_uri = uri;
+            newState = this.state[group];
+            newState.splice(isEditing.index, 1, field);
+        }
+
+        this.setState({
+            [group]: newState,
+            showModal: false,
+            content_to_edit: {}
+        })
+    }
+
+    handleModalCancelClick() {
+        this.setState({
+            showModal: false
+        })
+    }
+
+    handleDeleteClick(group, index) {
+        const newState = this.state[group];
+        newState.splice(index, 1);
+        this.setState({
+            [group]: newState
         })
     }
 
@@ -133,7 +226,7 @@ export default class DatasetMetadata extends Component {
                     </ul>
 
                     <h2 className="margin-top--3 margin-bottom--1">Contact details</h2>
-                    <ul className="menu-list margin-bottom--5">
+                    <ul className="menu-list">
                         {this.state.contact_details.map((field, index) => {
                                 return (
                                     <EditableField 
@@ -143,14 +236,47 @@ export default class DatasetMetadata extends Component {
                                         title={field.field_title} 
                                         value={field.field_value} 
                                         is_being_edited={field.field_is_being_edited}
-                                        group={"metadata"}
+                                        group={"contact_details"}
                                         handleEditClick={this.handleEditClick}
                                         handleSaveClick={this.handleSaveClick}
                                     />
                                 )
                         })}
                     </ul>
+
+                    <h2 className="margin-top--3 margin-bottom--1">Related links</h2>
+                    <ul className="menu-list margin-bottom--1">
+                        {this.state.related_links.map((field, index) => {
+                                return (
+                                    <EditableModalField
+                                        key={field.field_id}
+                                        index={index}
+                                        id={field.field_id} 
+                                        type={field.field_type} 
+                                        value={field.field_value} 
+                                        is_being_edited={field.field_is_being_edited}
+                                        group={"related_links"}
+                                        handleEditClick={this.handleModalEditClick}
+                                        handleSaveClick={this.handleSaveClick}
+                                        handleDeleteClick={this.handleDeleteClick}
+                                    />
+                                )
+                        })}
+                    </ul>
+                    <p className="btn btn--link margin-bottom--3" onClick={this.handleCreateClick}>Add another related link</p>
+                    <div>
+                        <Link to={"/preview"} className="btn btn--primary margin-bottom--5">Save and continue</Link>
+                    </div>
                 </div>
+                {this.state.showModal ? 
+                    <Modal sizeClass="grid__col-3">
+                        <EditableModal 
+                            group="related_links" 
+                            contentToEdit={this.state.content_to_edit} 
+                            onSave={this.handleModalSaveClick} 
+                            onCancel={this.handleModalCancelClick}/>
+                    </Modal>
+                : ""}
             </div>
         )
     }
