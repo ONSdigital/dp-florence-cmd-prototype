@@ -6,27 +6,27 @@ export default class NavBar extends Component {
         return (
             <ul className="global-nav__list">
                 <li className="global-nav__item">
-                    <a className="global-nav__link" href="/florence/publishing-queue">Collections</a>
+                    <a className="global-nav__link" href="/">Collections</a>
                 </li>
 
                 <li className="global-nav__item">
-                    <a className="global-nav__link" href="/florence/publishing-queue">Datasets</a>
+                    <a className="global-nav__link" href="/">Datasets</a>
                 </li>
 
                 <li className="global-nav__item">
-                    <a className="global-nav__link" href="/florence/publishing-queue">Publishing queue</a>
+                    <a className="global-nav__link" href="/">Publishing queue</a>
                 </li>
 
                 <li className="global-nav__item">
-                    <a className="global-nav__link" href="/florence/reports">Reports</a>
+                    <a className="global-nav__link" href="/">Reports</a>
                 </li>
 
                 <li className="global-nav__item">
-                    <a className="global-nav__link" href="/florence/users-and-access">Users and access</a>
+                    <a className="global-nav__link" href="/">Users and access</a>
                 </li>
 
                 <li className="global-nav__item">
-                    <a className="global-nav__link" href="/florence/publishing-queue">Teams</a>
+                    <a className="global-nav__link" href="/">Teams</a>
                 </li>
             </ul>
         )
