@@ -4,13 +4,25 @@ import '../scss/index.scss';
 class Preview extends Component {
   render() {
     return (
-        <form className="margin-left--3 margin-right--3">
-        <h1 className="wrapper margin-top--6">Preview</h1>
-         ◀ <a className="btn btn--link" href="http://google.com">Back</a>
-        <iframe src="http://localhost:3000/Consumer-price-inflation.html" title="test" width="100%" height="500px"></iframe>
-        <button type="submit" className="btn btn--primary margin-bottom--1 margin-left--2" >Save</button>
-        <span className="margin-left--1"><a href="http://google.com" id="submit-for-review" className="btn btn--positive">Save and submit for review</a></span>
-        </form>
+        <div>
+            <div className="grid grid--justify-center">
+                <div className="grid__col-xs-10 grid__col-md-8 grid__col-lg-6">
+                    <div className="margin-top--2">
+                        &#9664; <button type="button" className="btn btn--link">Back</button>
+                    </div>
+                    <h1 className="margin-top--1 margin-bottom--1">Preview</h1>
+                </div>
+            </div>
+            <iframe src="http://localhost:3000/Consumer-price-inflation.html" className="iframe--preview" width="100%" height="80vh"></iframe>
+            <div className="grid grid--justify-center">
+                <div className="grid__col-xs-10 grid__col-md-8 grid__col-lg-6">
+                    <div className="margin-top--1">
+                        <button type="submit" className="btn btn--primary margin-bottom--1" >Save</button>
+                        <span className="margin-left--1"><a href="http://google.com" id="submit-for-review" className="btn btn--positive">Save and submit for review</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
         );
     }
 }

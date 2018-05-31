@@ -2774,3 +2774,10 @@ details {
     padding: 10.5px 10px 10.5px 13px;
     background-color: #FFFFFF;
 }
+
+.iframe--preview {
+  border: none;
+  border-top: 3px solid grey;
+  border-bottom: 3px solid grey;
+  height: 70vh;
+}
