@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../scss/index.scss';
-import { Link } from "react-router-dom";
 
 class Preview extends Component {
   render() {
