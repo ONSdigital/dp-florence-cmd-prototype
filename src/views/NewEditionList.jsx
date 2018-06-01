@@ -20,7 +20,7 @@ export default class NewEditionList extends Component {
                     </div>
                     <ul className="menu-list">
                         <li className="menu-list__item">
-                            <h2><Link to="/new-edition">June 2018 edition</Link></h2>
+                            <h2><Link to="/new-version">June 2018 edition</Link></h2>
                             <p>Never released <span className="font-color--iron">|</span> Updated today at 8:44am</p>
                         </li>
                     </ul>

@@ -263,7 +263,7 @@ export default class DatasetMetadata extends Component {
                                 )
                         })}
                     </ul>
-                    <p className="btn btn--link margin-bottom--3" onClick={this.handleCreateClick}>Add another related link</p>
+                    <p className="btn btn--link margin-bottom--3" onClick={this.handleCreateClick}>Add a related link</p>
                     <div>
                         <Link to={"/preview"} className="btn btn--primary margin-bottom--5">Save and continue</Link>
                     </div>
@@ -271,7 +271,10 @@ export default class DatasetMetadata extends Component {
                 {this.state.showModal ? 
                     <Modal sizeClass="grid__col-3">
                         <EditableModal 
+                            modalTitle={"Add a related link"}
                             group="related_links" 
+                            fieldOne={{title: "URL", type: "text"}}
+                            fieldTwo={{title: "Title", type: "text"}}
                             contentToEdit={this.state.content_to_edit} 
                             onSave={this.handleModalSaveClick} 
                             onCancel={this.handleModalCancelClick}/>

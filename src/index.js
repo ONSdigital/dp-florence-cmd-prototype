@@ -13,6 +13,7 @@ import NewEditionList from './views/NewEditionList';
 import UpdateEditionList from './views/UpdateEditionList';
 import DatasetMetadata from './views/DatasetMetadata';
 import Collection from './views/Collection';
+import VersionMetadata from './views/VersionMetadata';
 
 //ReactDOM.render(<Preview />, document.getElementById('root'));
 
@@ -28,6 +29,7 @@ ReactDOM.render((
                 <Route exact path={`/publish-version`} component={NewEditionList} />
                 <Route exact path={`/update-version`} component={UpdateEditionList} />
                 <Route exact path={`/dataset-metadata`} component={DatasetMetadata} />
+                <Route exact path={`/new-version`} component={VersionMetadata} />
                 <Route exact path={`/preview`} component={Preview} />
             </span>
         </Router>

@@ -6,13 +6,13 @@ export default class EditableModal extends Component {
 
         this.state = {
             type: this.props.contentToEdit.field_type || "",
-            value: this.props.contentToEdit.field_value || "",
-            uri: this.props.contentToEdit.field_uri || "",
+            fieldOne: this.props.contentToEdit.field_value || "",
+            fieldTwo: this.props.contentToEdit.field_uri || "",
         }
 
         this.handleTypeChange = this.handleTypeChange.bind(this);
-        this.handleUriChange = this.handleUriChange.bind(this);
-        this.handleValueChange = this.handleValueChange.bind(this);
+        this.handleFieldOneChange = this.handleFieldOneChange.bind(this);
+        this.handleFieldTwoChange = this.handleFieldTwoChange.bind(this);
         this.handleSaveClick = this.handleSaveClick.bind(this);
     }
 
@@ -23,39 +23,38 @@ export default class EditableModal extends Component {
         })
     } 
 
-    handleUriChange(event) {
-        const uri = event.target.value
+    handleFieldOneChange(event) {
+        const newFieldOne = event.target.value
         this.setState({
-            uri: uri
+            fieldOne: newFieldOne
         })
     } 
 
-    handleValueChange(event) {
-        const value = event.target.value
+    handleFieldTwoChange(event) {
+        const newFieldTwo = event.target.value
         this.setState({
-            value: value
+            fieldTwo: newFieldTwo
         })
     }
 
     handleSaveClick() {
-        this.props.onSave(this.props.group, this.state.type, this.state.value, this.state.uri, this.props.contentToEdit)
+        this.props.onSave(this.props.group, this.state.type, this.state.fieldTwo, this.state.fieldOne, this.props.contentToEdit)
     }
 
     render() {
         return (
             <div>
                 <div className="modal__header">
-                    <h2>Add a related link</h2>
+                    <h2>{this.props.modalTitle}</h2>
                 </div>
 
                 <div className="modal__body">
-                    <label className="form__label">URL</label>
-                    <input className="input input__text margin-bottom--2" onChange={this.handleUriChange} value={this.state.uri}/>
+                    <label className="form__label">{this.props.fieldOne.title}</label>
+                    <input className="input input__text margin-bottom--2" type={this.props.fieldOne.type} onChange={this.handleFieldOneChange} value={this.state.uri}/>
 
-                    <label className="form__label">Title</label>
-                    <input className="input input__text margin-bottom--2" onChange={this.handleValueChange} value={this.state.value}/>
+                    <label className="form__label">{this.props.fieldTwo.title}</label>
+                    <input className="input input__text margin-bottom--2" type={this.props.fieldTwo.type} onChange={this.handleFieldTwoChange} value={this.state.value}/>
                 </div>
-
 
                 <div className="modal__footer">
                     <button type="button" className={"btn btn--primary btn--margin-right"} onClick={this.handleSaveClick}>Add</button>
