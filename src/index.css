@@ -2785,7 +2785,7 @@ details {
   color:#D0D2D3;
 }
 
-p, p > a, button, .btn, input {
+p, p > a, button, .btn, input, label {
   font-size: 16px;
 }
 
