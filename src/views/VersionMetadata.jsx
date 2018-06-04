@@ -32,7 +32,7 @@ export default class VersionMetadata extends Component {
                     field_is_being_edited: false
                 },
             ],
-            in_this_dateset: [
+            in_this_dataset: [
                 {
                     field_id: "08",
                     field_title: "Good and services",
@@ -136,10 +136,9 @@ export default class VersionMetadata extends Component {
     }
 
     handleModalSaveClick(group, type, value, date, isEditing) {
-        console.log(group, type, value, date, isEditing)
         let newState;
         if (!isEditing.field_id) {
-            const id = (this.state.metadata.length + this.state.in_this_dateset.length + this.state.notices.length + 1).toString();
+            const id = (this.state.metadata.length + this.state.in_this_dataset.length + this.state.notices.length + 1).toString();
             const newItem = {
                 field_id: id,
                 field_type: type,
@@ -236,7 +235,7 @@ export default class VersionMetadata extends Component {
 
                     <h2 className="margin-top--3 margin-bottom--1">In this dataset</h2>
                     <ul className="menu-list margin-bottom--3">
-                        {this.state.in_this_dateset.map((field, index) => {
+                        {this.state.in_this_dataset.map((field, index) => {
                                 return (
                                     <EditableField 
                                         key={field.field_id}
