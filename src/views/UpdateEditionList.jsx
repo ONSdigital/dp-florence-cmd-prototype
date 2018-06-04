@@ -1,9 +1,26 @@
 import React, { Component } from 'react';
 import '../scss/index.scss';
 import { Link } from "react-router-dom";
+import Data from "../Data"
 
 export default class NewEditionList extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            selectedDataset: {},
+        }
+    }
+
+    componentWillMount() {
+        const data = new Data()
+        this.setState({
+            selectedDataset: data.getDatasetName(this.props.location.search.substr(12, this.props.location.search.length - 12))
+        })
+    }
+
     render() {
+        const datasetName = this.state.selectedDataset ? this.state.selectedDataset.name : "";
         return (
             <div className="grid grid--justify-center">
                 <div className="grid__col-xs-10 grid__col-md-8 grid__col-lg-6">
@@ -11,7 +28,7 @@ export default class NewEditionList extends Component {
                         &#9664; <Link to="/dataset-options" className="btn btn--link">Back</Link>
                     </div>
                     <h1 className="margin-top--1 margin-bottom--1">Select old edition</h1>
-                    <p className="margin-bottom--1">Dataset:</p>
+                    <p className="margin-bottom--1">Dataset: {datasetName}</p>
                     <div>
                     <details className=" margin-bottom--1" >
                         <summary>What is this page?</summary>

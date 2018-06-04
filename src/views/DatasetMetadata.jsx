@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../scss/index.scss';
 import { Link } from "react-router-dom";
+import Data from "../Data"
 import EditableField from "../components/EditableField"
 import EditableModalField from "../components/EditableModalField"
 import Modal from "../components/Modal"
@@ -92,7 +93,8 @@ export default class DatasetMetadata extends Component {
                 },
             ],
             content_to_edit: {},
-            showModal: false
+            showModal: false,
+            selectedDataset: {}
         }
 
         this.handleEditClick = this.handleEditClick.bind(this);
@@ -102,6 +104,13 @@ export default class DatasetMetadata extends Component {
         this.handleModalEditClick = this.handleModalEditClick.bind(this);
         this.handleModalCancelClick = this.handleModalCancelClick.bind(this);
         this.handleModalSaveClick = this.handleModalSaveClick.bind(this);
+    }
+
+    componentWillMount() {
+        const data = new Data()
+        this.setState({
+            selectedDataset: data.getDatasetName(this.props.location.search.substr(12, this.props.location.search.length - 12))
+        })
     }
 
     handleEditClick(id, group, index) {
@@ -198,6 +207,7 @@ export default class DatasetMetadata extends Component {
     }
 
     render() {
+        const datasetName = this.state.selectedDataset ? this.state.selectedDataset.name : "";
         return (
             <div className="grid grid--justify-center">
                 <div className="grid__col-xs-10 grid__col-md-8 grid__col-lg-6">
@@ -205,7 +215,7 @@ export default class DatasetMetadata extends Component {
                         &#9664; <Link to="/dataset-options" className="btn btn--link">Back</Link>
                     </div>
                     <h1 className="margin-top--1 margin-bottom--1">Change key metadata</h1>
-                    <p className="margin-bottom--1">Dataset:</p>
+                    <p className="margin-bottom--1">Dataset: {datasetName}</p>
 
                     <h2 className="margin-bottom--1">Metadata for this dataset</h2>
                     <ul className="menu-list">
