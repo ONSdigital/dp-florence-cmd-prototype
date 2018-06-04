@@ -83,9 +83,14 @@ export default class VersionMetadata extends Component {
     }
 
     componentWillMount() {
+        //const url = new URL(this.props.location.search);
+        const url = new URL(window.location.href);
+        const datasetId = url.searchParams.get("dataset-id");
+        const versionId = url.searchParams.get("version-id");
         const data = new Data()
         this.setState({
-            selectedDataset: data.getDatasetName(this.props.location.search.substr(12, this.props.location.search.length - 12))
+            selectedDataset: data.getDatasetName(datasetId),
+            ...data.getVersionMetadata(datasetId, versionId)
         })
     }
 

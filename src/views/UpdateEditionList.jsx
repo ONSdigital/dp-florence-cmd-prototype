@@ -39,15 +39,15 @@ export default class NewEditionList extends Component {
                     </div>
                     <ul className="menu-list">
                         <li className="menu-list__item">
-                            <h2><Link to={`/new-version${this.props.location.search}`}>May 2018 edition</Link></h2>
+                            <h2><Link to={`/new-version${this.props.location.search}&version-id=02`}>May 2018 edition</Link></h2>
                             <p>Released on 16 May 2018</p>
                         </li>
                         <li className="menu-list__item">
-                            <h2><Link to={`/new-version${this.props.location.search}`}>April 2018 edition</Link></h2>
+                            <h2><Link to={`/new-version${this.props.location.search}&version-id=03`}>April 2018 edition</Link></h2>
                             <p>Released on 15 April 2018</p>
                         </li>
                         <li className="menu-list__item">
-                            <h2><Link to={`/new-version${this.props.location.search}`}>March 2018 edition</Link></h2>
+                            <h2><Link to={`/new-version${this.props.location.search}&version-id=04`}>March 2018 edition</Link></h2>
                             <p>Released on 17 March 2018</p>
                         </li>
                     </ul>
