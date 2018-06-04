@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import './index.css';
 import './scss/index.scss';
 import Preview from './views/Preview';
-import registerServiceWorker from './registerServiceWorker';
 import NavBar from './global/Navbar';
 import DatasetList from './views/DatasetList';
 import DatasetOptions from './views/DatasetOptions';
@@ -34,4 +33,3 @@ ReactDOM.render((
     </div>
     ), document.getElementById('root'))
 
-registerServiceWorker();
