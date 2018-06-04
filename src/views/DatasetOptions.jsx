@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 export default class DatasetOptions extends Component {
     render() {
+        console.log(this.props.location.search)
         return (
             <div className="grid grid--justify-center">
                 <div className="grid__col-xs-10 grid__col-md-8 grid__col-lg-6">
@@ -14,15 +15,15 @@ export default class DatasetOptions extends Component {
                     <p className="margin-bottom--1">Dataset:</p>
                     <ul className="menu-list">
                         <li className="menu-list__item">
-                            <h2><Link to="/publish-version">Publish a new edition</Link></h2>
+                            <h2><Link to={`/publish-version${this.props.location.search}`}>Publish a new edition</Link></h2>
                             <p>For publishing unreleased data.</p>
                         </li>
                         <li className="menu-list__item">
-                            <h2><Link to="/update-version">Update an old edition</Link></h2>
+                            <h2><Link to={`/update-version${this.props.location.search}`}>Update an old edition</Link></h2>
                             <p>For adding alert/correction notices and updating metadata that's specific to a release.</p>
                         </li>
                         <li className="menu-list__item">
-                            <h2><Link to="/dataset-metadata">Change key metadata</Link></h2>
+                            <h2><Link to={`/dataset-metadata${this.props.location.search}`}>Change key metadata</Link></h2>
                             <p className="margin-bottom--1">Includes title, keywords, contact details and related links.</p>
                             <p>Editing this metadata will affect all releases of this data.</p>
                         </li>

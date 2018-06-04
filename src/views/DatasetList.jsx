@@ -10,23 +10,28 @@ export default class DatasetList extends Component {
             datasets: [
                 { 
                     name: "Consumer Prices Index including owner occupiers' housing costs (CPIH)",
-                    lastUpdated: "Updated today at 8:44am"
+                    lastUpdated: "Updated today at 8:44am",
+                    id: "cpih"
                 },
                 { 
                     name: "Annual Summary of Hours Worked, Place of Work by Local Authority",
-                    lastUpdated: "Updated yesterday at 3:15pm"
+                    lastUpdated: "Updated yesterday at 3:15pm",
+                    id: "ashe"
                 },
                 { 
                     name: "Population estimates for UK, England and Wales, Scotland and Northern Ireland",
-                    lastUpdated: "Updated 16 May 2018 at 5:45pm"
+                    lastUpdated: "Updated 16 May 2018 at 5:45pm",
+                    id: "popest"
                 },
                 { 
                     name: "International Passenger Survey 4.01, citizenship group by sex by age by country of last or next residence",
-                    lastUpdated: "Updated 1 May 2018 at 1:45pm"
+                    lastUpdated: "Updated 1 May 2018 at 1:45pm",
+                    id: "ips"
                 },
                 { 
                     name: "Personal crime by accomodation",
-                    lastUpdated: "Updated 29 April 2018 at 10:45am"
+                    lastUpdated: "Updated 29 April 2018 at 10:45am",
+                    id: "pca"
                 },
             ],
             filteredDatasets: []
@@ -63,7 +68,7 @@ export default class DatasetList extends Component {
                         {datasets.map((dataset, index) => {
                             return (
                                 <li key={index} className="menu-list__item">
-                                    <h2><Link to={`/dataset-options`}>{dataset.name}</Link></h2>
+                                    <h2><Link to={`/dataset-options?dataset-id=${dataset.id}`}>{dataset.name}</Link></h2>
                                     <p>{dataset.lastUpdated}</p>
                                 </li>
                             )
