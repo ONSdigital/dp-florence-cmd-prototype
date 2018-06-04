@@ -265,7 +265,7 @@ export default class VersionMetadata extends Component {
                     </ul>
 
                     <div>
-                        <Link to={"/preview"} className="btn btn--primary margin-bottom--5">Save and continue</Link>
+                        <Link to={"preview"} className="btn btn--primary margin-bottom--5">Save and continue</Link>
                     </div>
                 </div>
                 {this.state.showModal ? 

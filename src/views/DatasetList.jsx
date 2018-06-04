@@ -52,7 +52,7 @@ export default class DatasetList extends Component {
                         {datasets.length ? datasets.map((dataset, index) => {
                             return (
                                 <li key={index} className="menu-list__item">
-                                    <h2><Link to={`/dataset-options?dataset-id=${dataset.id}`}>{dataset.name}</Link></h2>
+                                    <h2><Link to={`dataset-options?dataset-id=${dataset.id}`}>{dataset.name}</Link></h2>
                                     <p>{dataset.lastUpdated}</p>
                                 </li>
                             )

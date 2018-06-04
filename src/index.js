@@ -15,22 +15,20 @@ import DatasetMetadata from './views/DatasetMetadata';
 import Collection from './views/Collection';
 import VersionMetadata from './views/VersionMetadata';
 
-//ReactDOM.render(<Preview />, document.getElementById('root'));
-
 ReactDOM.render((
     <div>
         <NavBar />
         <Router>
             <span>
-                <Route exact path={`/`} component={Collection} />
-                <Route exact path={`/collections`} component={Collection} />
-                <Route exact path={`/datasets`} component={DatasetList} />
-                <Route exact path={`/dataset-options`} component={DatasetOptions} />
-                <Route exact path={`/publish-version`} component={NewEditionList} />
-                <Route exact path={`/update-version`} component={UpdateEditionList} />
-                <Route exact path={`/dataset-metadata`} component={DatasetMetadata} />
-                <Route exact path={`/new-version`} component={VersionMetadata} />
-                <Route exact path={`/preview`} component={Preview} />
+                <Route exact path={`${process.env.PUBLIC_URL}/`} component={Collection} />
+                <Route exact path={`${process.env.PUBLIC_URL}/collections`} component={Collection} />
+                <Route exact path={`${process.env.PUBLIC_URL}/datasets`} component={DatasetList} />
+                <Route exact path={`${process.env.PUBLIC_URL}/dataset-options`} component={DatasetOptions} />
+                <Route exact path={`${process.env.PUBLIC_URL}/publish-version`} component={NewEditionList} />
+                <Route exact path={`${process.env.PUBLIC_URL}/update-version`} component={UpdateEditionList} />
+                <Route exact path={`${process.env.PUBLIC_URL}/dataset-metadata`} component={DatasetMetadata} />
+                <Route exact path={`${process.env.PUBLIC_URL}/new-version`} component={VersionMetadata} />
+                <Route exact path={`${process.env.PUBLIC_URL}/preview`} component={Preview} />
             </span>
         </Router>
     </div>

@@ -286,7 +286,7 @@ export default class DatasetMetadata extends Component {
                     </ul>
                     <p className="btn btn--link margin-bottom--3" onClick={this.handleCreateClick}>Add a related link</p>
                     <div>
-                        <Link to={"/preview"} className="btn btn--primary margin-bottom--5">Save and continue</Link>
+                        <Link to={"preview"} className="btn btn--primary margin-bottom--5">Save and continue</Link>
                     </div>
                 </div>
                 {this.state.showModal ? 

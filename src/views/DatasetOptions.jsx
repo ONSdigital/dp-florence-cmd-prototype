@@ -31,15 +31,15 @@ export default class DatasetOptions extends Component {
                     <p className="margin-bottom--1">Dataset: {datasetName}</p>
                     <ul className="menu-list">
                         <li className="menu-list__item">
-                            <h2><Link to={`/publish-version${this.props.location.search}`}>Publish a new edition</Link></h2>
+                            <h2><Link to={`publish-version${this.props.location.search}`}>Publish a new edition</Link></h2>
                             <p>For publishing unreleased data.</p>
                         </li>
                         <li className="menu-list__item">
-                            <h2><Link to={`/update-version${this.props.location.search}`}>Update an old edition</Link></h2>
+                            <h2><Link to={`update-version${this.props.location.search}`}>Update an old edition</Link></h2>
                             <p>For adding alert/correction notices and updating metadata that's specific to a release.</p>
                         </li>
                         <li className="menu-list__item">
-                            <h2><Link to={`/dataset-metadata${this.props.location.search}`}>Change key metadata</Link></h2>
+                            <h2><Link to={`dataset-metadata${this.props.location.search}`}>Change key metadata</Link></h2>
                             <p className="margin-bottom--1">Includes title, keywords, contact details and related links.</p>
                             <p>Editing this metadata will affect all releases of this data.</p>
                         </li>

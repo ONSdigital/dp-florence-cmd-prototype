@@ -48,7 +48,7 @@ export default class Collection extends Component {
                         </div>
                         <div className="drawer__banner">
                             <a className="btn btn--primary">Create/edit page</a>
-                            <Link className="btn btn--primary btn--margin-left" to="/datasets">Add imported dataset</Link>
+                            <Link className="btn btn--primary btn--margin-left" to={`datasets`}>Add imported dataset</Link>
                             <button className="btn btn--margin-left">Restore page</button>
                         </div>
                         <div className="drawer__body">
