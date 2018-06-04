@@ -2784,3 +2784,11 @@ details {
 .font-color--iron{
   color:#D0D2D3;
 }
+
+p, p > a, button, .btn, input {
+  font-size: 16px;
+}
+
+a.btn:hover {
+  cursor: pointer;
+}
