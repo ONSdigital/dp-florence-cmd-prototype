@@ -18,7 +18,6 @@ export default class NoticesModal extends Component {
 
     handleTypeChange(event) {
         const type = event.target.value
-        console.log(type);
         this.setState({
             type: type
         })
@@ -26,7 +25,6 @@ export default class NoticesModal extends Component {
 
     handleDateChange(event) {
         const date = event.target.value
-        console.log(date)
         this.setState({
             date: date
         })
@@ -34,7 +32,6 @@ export default class NoticesModal extends Component {
 
     handleValueChange(event) {
         const value = event.target.value;
-        console.log(value)
         this.setState({
             value: value
         })
