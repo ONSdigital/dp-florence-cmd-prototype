@@ -192,7 +192,15 @@ export default class VersionMetadata extends Component {
                     </div>
                     <h1 className="margin-top--1 margin-bottom--1">New edition metadata</h1>
                     <p className="margin-bottom--1">Dataset: {datasetName}</p>
-
+                    <div>
+                    <details className=" margin-bottom--1" >
+                        <summary>What is this page?</summary>
+                        <ul className="margin-left--1">
+                            <li className="margin-top--1">This page contains specific metadata for this edition</li>
+                            <li className="margin-top--1">Changing it will only affect this edition</li>
+                        </ul>
+                    </details>
+                    </div>
                     <h2 className="margin-bottom--1">Metadata for this edition</h2>
                     <ul className="menu-list">
                         {this.state.metadata.map((field, index) => {

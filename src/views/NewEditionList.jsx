@@ -32,7 +32,10 @@ export default class NewEditionList extends Component {
                     <div>
                     <details className=" margin-bottom--1" >
                         <summary>What is this page?</summary>
-                        <p>test</p>
+                        <ul className="margin-left--1">
+                            <li className="margin-top--1">A list of editions that are ready to be released</li>
+                            <li className="margin-top--1">Select one to check and update the metadata</li>
+                        </ul>
                     </details>
                     </div>
                     <ul className="menu-list">

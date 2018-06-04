@@ -217,6 +217,16 @@ export default class DatasetMetadata extends Component {
                     <h1 className="margin-top--1 margin-bottom--1">Change key metadata</h1>
                     <p className="margin-bottom--1">Dataset: {datasetName}</p>
 
+                    <div>
+                    <details className=" margin-bottom--1" >
+                        <summary>What is this page?</summary>
+                        <ul className="margin-left--1">
+                            <li className="margin-top--1">This page contains key information about the dataset</li>
+                            <li className="margin-top--1">Editing this metadata will affect all releases of this data</li>
+                        </ul>
+                    </details>
+                    </div>
+
                     <h2 className="margin-bottom--1">Metadata for this dataset</h2>
                     <ul className="menu-list">
                         {this.state.metadata.map((field, index) => {
