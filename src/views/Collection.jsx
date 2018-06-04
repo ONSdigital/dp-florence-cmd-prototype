@@ -43,11 +43,11 @@ export default class Collection extends Component {
                                 <div className="grid grid--justify-space-between grid--align-end"><div>
                                     <h2>CPIH dataset</h2><p>Manual publish</p>
                                 </div>
-                                <a className="colour--cadet-blue font-size--16" href="/florence/collections/cpihdataset-6bf24c2b99514c4b33bb7dcebbfedff5bd0d9c679754abb1c325fb6aaf1ff1a8/edit">Edit</a>
+                                <a className="colour--cadet-blue font-size--16" >Edit</a>
                             </div>
                         </div>
                         <div className="drawer__banner">
-                            <a href="/florence/workspace?collection=cpihdataset-6bf24c2b99514c4b33bb7dcebbfedff5bd0d9c679754abb1c325fb6aaf1ff1a8" className="btn btn--primary">Create/edit page</a>
+                            <a className="btn btn--primary">Create/edit page</a>
                             <Link className="btn btn--primary btn--margin-left" to="/datasets">Add imported dataset</Link>
                             <button className="btn btn--margin-left">Restore page</button>
                         </div>
