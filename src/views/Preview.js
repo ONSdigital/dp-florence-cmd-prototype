@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../scss/index.scss';
+import { Link } from "react-router-dom";
 
 class Preview extends Component {
   render() {
@@ -17,8 +18,8 @@ class Preview extends Component {
             <div className="grid grid--justify-center">
                 <div className="grid__col-xs-10 grid__col-md-8 grid__col-lg-6">
                     <div className="margin-top--1">
-                        <a href="collections" id="submit-for-review" className="btn btn--primary">Save</a>
-                        <a href="collections" id="submit-for-review" className="btn btn--positive margin-left--1">Save and submit for review</a>
+                        <Link to="collections" id="submit-for-review" className="btn btn--primary">Save</Link>
+                        <Link to="collections" id="submit-for-review" className="btn btn--positive margin-left--1">Save and submit for review</Link>
                     </div>
                 </div>
             </div>
