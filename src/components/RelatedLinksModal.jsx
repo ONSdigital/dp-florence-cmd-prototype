@@ -5,23 +5,15 @@ export default class RelatedLinksModal extends Component {
         super(props)
 
         this.state = {
-            type: this.props.contentToEdit.field_type || "",
+            type: "Bulletin",
             value: this.props.contentToEdit.field_value || "",
             uri: this.props.contentToEdit.field_uri || "",
         }
 
-        this.handleTypeChange = this.handleTypeChange.bind(this);
         this.handleUriChange = this.handleUriChange.bind(this);
         this.handleValueChange = this.handleValueChange.bind(this);
         this.handleSaveClick = this.handleSaveClick.bind(this);
     }
-
-    handleTypeChange(event) {
-        const type = event.target.value
-        this.setState({
-            type: type
-        })
-    } 
 
     handleUriChange(event) {
         const uri = event.target.value
