@@ -13,12 +13,12 @@ class Preview extends Component {
                     <h1 className="margin-top--1 margin-bottom--1">Preview</h1>
                 </div>
             </div>
-            <iframe src="../preview/consumer-prices-index.html" title="ONS website preview" className="iframe--preview" width="100%" height="80vh"></iframe>
+            <iframe src="/dp-florence-cmd-prototype/iframe-preview/consumer-prices-index.html" title="ONS website preview" className="iframe--preview" width="100%" height="80vh"></iframe>
             <div className="grid grid--justify-center">
                 <div className="grid__col-xs-10 grid__col-md-8 grid__col-lg-6">
                     <div className="margin-top--1">
-                        <button type="submit" className="btn btn--primary margin-bottom--1" >Save</button>
-                        <span className="margin-left--1"><a href="/Collections" id="submit-for-review" className="btn btn--positive">Save and submit for review</a></span>
+                        <a href="collections" id="submit-for-review" className="btn btn--primary">Save</a>
+                        <a href="collections" id="submit-for-review" className="btn btn--positive margin-left--1">Save and submit for review</a>
                     </div>
                 </div>
             </div>
