@@ -17,9 +17,9 @@ import VersionMetadata from './views/VersionMetadata';
 
 ReactDOM.render((
     <div>
-        <NavBar />
         <Router>
             <span>
+            <NavBar />
                 <Route exact path={`${process.env.PUBLIC_URL}/`} component={Collection} />
                 <Route exact path={`${process.env.PUBLIC_URL}/collections`} component={Collection} />
                 <Route exact path={`${process.env.PUBLIC_URL}/datasets`} component={DatasetList} />
