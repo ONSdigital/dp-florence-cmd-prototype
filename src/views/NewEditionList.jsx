@@ -40,6 +40,10 @@ export default class NewEditionList extends Component {
                             <h2><Link to={`/new-version${this.props.location.search}`}>June 2018 edition</Link></h2>
                             <p>Never released <span className="font-color--iron">|</span> Updated today at 8:44am</p>
                         </li>
+                        <li className="menu-list__item">
+                            <h2><Link to={`/new-version${this.props.location.search}`}>June 2018 edition</Link></h2>
+                            <p>Never released <span className="font-color--iron">|</span> Updated yesterday at 4:48pm</p>
+                        </li>
                     </ul>
                 </div>
             </div>
