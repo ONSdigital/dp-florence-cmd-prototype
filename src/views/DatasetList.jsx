@@ -9,7 +9,8 @@ export default class DatasetList extends Component {
 
         this.state = {
             datasets: [],
-            filteredDatasets: []
+            filteredDatasets: [],
+            searchTerm: ""
         }
 
         this.handleSearch = this.handleSearch.bind(this)
@@ -29,12 +30,13 @@ export default class DatasetList extends Component {
             return dataset.name.toLowerCase().search(searchTerm) !== -1
         });
         this.setState({
-            filteredDatasets: filteredDatasets
+            filteredDatasets: filteredDatasets,
+            searchTerm: searchTerm
         });
     }
 
     render() {
-        const datasets = this.state.filteredDatasets.length ? this.state.filteredDatasets : this.state.datasets;
+        const datasets = this.state.searchTerm ? this.state.filteredDatasets : this.state.datasets;
         return (
             <div className="grid grid--justify-center">
                 <div className="grid__col-xs-10 grid__col-md-8 grid__col-lg-6">
@@ -47,14 +49,18 @@ export default class DatasetList extends Component {
                         <input className="input input__text margin-bottom--2" placeholder="E.g. Consumer prices" onChange={this.handleSearch}/>
                     </div>
                     <ul className="menu-list">
-                        {datasets.map((dataset, index) => {
+                        {datasets.length ? datasets.map((dataset, index) => {
                             return (
                                 <li key={index} className="menu-list__item">
                                     <h2><Link to={`/dataset-options?dataset-id=${dataset.id}`}>{dataset.name}</Link></h2>
                                     <p>{dataset.lastUpdated}</p>
                                 </li>
                             )
-                        })}
+                        }): 
+                        <li className="menu-list__item">
+                            <p>No results found for {this.state.searchTerm}</p>
+                        </li> 
+                    }
                     </ul>
                 </div>
             </div>
