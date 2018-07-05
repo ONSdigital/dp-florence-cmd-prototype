@@ -18,9 +18,8 @@ export default class DatasetList extends Component {
     }
 
     componentWillMount() {
-        const data = new Data()
         this.setState({
-            datasets: data.getDatasetNamesAndLastUpdated()
+            datasets: Data.getDatasetNamesAndLastUpdated()
         })
     }
 

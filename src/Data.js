@@ -1,6 +1,7 @@
 export default class Data {
-    constructor() {
-        this.data = [
+
+    static data() {
+        return [
             { 
                 name: "Annual Summary of Hours Worked, Place of Work by Local Authority",
                 lastUpdated: "Updated yesterday at 3:15pm",
@@ -1143,21 +1144,21 @@ export default class Data {
             },
         ]
     }
-
-    getDatasetName(datasetId) {
-        return this.data.find(dataset => {
+    
+    static getDatasetName(datasetId) {
+        return this.data().find(dataset => {
             return dataset.id === datasetId
         })
     }
 
-    getDatasetNamesAndLastUpdated() {
-        return this.data.map(dataset => {
+    static getDatasetNamesAndLastUpdated() {
+        return this.data().map(dataset => {
             return dataset
         })
     }
 
-    getVersionMetadata(datasetId, versionId) {
-        const dataset = this.data.find(dataset => {
+    static getVersionMetadata(datasetId, versionId) {
+        const dataset = this.data().find(dataset => {
             return dataset.id === datasetId 
         })
 

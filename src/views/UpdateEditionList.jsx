@@ -13,9 +13,8 @@ export default class NewEditionList extends Component {
     }
 
     componentWillMount() {
-        const data = new Data()
         this.setState({
-            selectedDataset: data.getDatasetName(this.props.location.search.substr(12, this.props.location.search.length - 12))
+            selectedDataset: Data.getDatasetName(this.props.location.search.substr(12, this.props.location.search.length - 12))
         })
     }
 
