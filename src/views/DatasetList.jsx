@@ -26,7 +26,7 @@ export default class DatasetList extends Component {
     handleSearch(event) {
         const searchTerm = event.target.value.toLowerCase();
         const filteredDatasets = this.state.datasets.filter(dataset => {
-            return dataset.name.toLowerCase().search(searchTerm) !== -1
+            return dataset.keywords.toLowerCase().search(searchTerm) !== -1
         });
         this.setState({
             filteredDatasets: filteredDatasets,
@@ -44,14 +44,16 @@ export default class DatasetList extends Component {
                     </div>
                     <h1 className="margin-top--1 margin-bottom--1">Select a dataset</h1>
                     <div className="grid__col-lg-7">
-                        <label className="form__label">Search by dataset title</label>
-                        <input className="input input__text margin-bottom--2" placeholder="E.g. Consumer prices" onChange={this.handleSearch}/>
+                        <label className="form__label">Search</label>
+                        <p>Search by dataset title, taxonomy or acronym.</p>
+                        <input className="input input__text margin-bottom--2" placeholder="E.g. Consumer prices or ASHE" onChange={this.handleSearch}/>
                     </div>
                     <ul className="menu-list">
                         {datasets.length ? datasets.map((dataset, index) => {
                             return (
                                 <li key={index} className="menu-list__item">
                                     <h2><Link to={`dataset-options?dataset-id=${dataset.id}`}>{dataset.name}</Link></h2>
+                                    <p>{dataset.breadcrumbs}</p>
                                     <p>{dataset.lastUpdated}</p>
                                 </li>
                             )

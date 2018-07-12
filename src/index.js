@@ -13,6 +13,7 @@ import UpdateEditionList from './views/UpdateEditionList';
 import DatasetMetadata from './views/DatasetMetadata';
 import Collection from './views/Collection';
 import VersionMetadata from './views/VersionMetadata';
+import AlertVersionMetadata from './views/AlertVersionMetadata';
 
 ReactDOM.render((
     <div>
@@ -28,6 +29,7 @@ ReactDOM.render((
                 <Route exact path={`${process.env.PUBLIC_URL}/dataset-metadata`} component={DatasetMetadata} />
                 <Route exact path={`${process.env.PUBLIC_URL}/new-version`} component={VersionMetadata} />
                 <Route exact path={`${process.env.PUBLIC_URL}/preview`} component={Preview} />
+                <Route exact path={`${process.env.PUBLIC_URL}/add-alert`} component={AlertVersionMetadata} />
             </span>
         </Router>
     </div>

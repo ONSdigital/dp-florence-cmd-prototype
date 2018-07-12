@@ -4,7 +4,9 @@ export default class Data {
         return [
             { 
                 name: "Annual Summary of Hours Worked, Place of Work by Local Authority",
-                lastUpdated: "Updated yesterday at 3:15pm",
+                lastUpdated: "Edited yesterday at 3:15pm",
+                breadcrumbs: "Home > Employment and labour market > People in work > Earnings and working hours",
+                keywords:"Annual Summary of Hours Worked, Place of Work by Local Authority Home > Employment and labour market > People in work > Earnings and working hours ashe",
                 id: "ashe",
                 versions: [
                     {
@@ -50,6 +52,7 @@ export default class Data {
                             },
                         ],
                         notices: [],
+                        usage_notes: [],
                     },
                     {
                         id: "02",
@@ -109,6 +112,7 @@ export default class Data {
                                 field_is_being_edited: false
                             },
                         ],
+                        usage_notes: [],
                     },
                     {
                         id: "03",
@@ -168,6 +172,7 @@ export default class Data {
                                 field_is_being_edited: false
                             },
                         ],
+                        usage_notes: [],
                     },
                     {
                         id: "04",
@@ -227,12 +232,15 @@ export default class Data {
                                 field_is_being_edited: false
                             },
                         ],
+                        usage_notes: [],
                     }
                 ]
             },
             { 
                 name: "Population estimates for UK, England and Wales, Scotland and Northern Ireland",
-                lastUpdated: "Updated 16 May 2018 at 5:45pm",
+                lastUpdated: "Edited 16 May 2018 at 5:45pm",
+                breadcrumbs: "Home > People, population and community > Population and migration > Population estimates",
+                keywords:"Population estimates for UK, England and Wales, Scotland and Northern Ireland Home > People, population and community > Population and migration > Population estimates popest",
                 id: "popest",
                 versions: [
                     {
@@ -278,6 +286,7 @@ export default class Data {
                             },
                         ],
                         notices: [],
+                        usage_notes: [],
                     },
                     {
                         id: "02",
@@ -337,6 +346,7 @@ export default class Data {
                                 field_is_being_edited: false
                             },
                         ],
+                        usage_notes: [],
                     },
                     {
                         id: "03",
@@ -396,6 +406,7 @@ export default class Data {
                                 field_is_being_edited: false
                             },
                         ],
+                        usage_notes: [],
                     },
                     {
                         id: "04",
@@ -455,12 +466,15 @@ export default class Data {
                                 field_is_being_edited: false
                             },
                         ],
+                        usage_notes: [],
                     }
                 ]
             },
             { 
                 name: "Consumer Prices Index including owner occupiers' housing costs (CPIH)",
-                lastUpdated: "Updated 8 May 2018 at 8:44am",
+                lastUpdated: "Edited 8 May 2018 at 8:44am",
+                breadcrumbs: "Home > Economy > Inflation and price indices ",
+                keywords:"Consumer Prices Index including owner occupiers' housing costs ( CPIH ) Home > Economy > Inflation and price indices cpih",
                 id: "cpih",
                 versions: [
                     {
@@ -506,6 +520,7 @@ export default class Data {
                             },
                         ],
                         notices: [],
+                        usage_notes: [],
                     },
                     {
                         id: "02",
@@ -565,6 +580,7 @@ export default class Data {
                                 field_is_being_edited: false
                             },
                         ],
+                        usage_notes: [],
                     },
                     {
                         id: "03",
@@ -624,6 +640,7 @@ export default class Data {
                                 field_is_being_edited: false
                             },
                         ],
+                        usage_notes: [],
                     },
                     {
                         id: "04",
@@ -683,12 +700,15 @@ export default class Data {
                                 field_is_being_edited: false
                             },
                         ],
+                        usage_notes: [],
                     }
                 ]
             },
             { 
                 name: "International Passenger Survey 4.01, citizenship group by sex by age by country of last or next residence",
-                lastUpdated: "Updated 1 May 2018 at 1:45pm",
+                lastUpdated: "Edited 1 May 2018 at 1:45pm",
+                breadcrumbs: "Home > People, population and community > Population and migration > International migration",
+                keywords:"International Passenger Survey 4.01, citizenship group by sex by age by country of last or next residence Home > People, population and community > Population and migration > International migration ips",
                 id: "ips",
                 versions: [
                     {
@@ -734,6 +754,7 @@ export default class Data {
                             },
                         ],
                         notices: [],
+                        usage_notes: [],
                     },
                     {
                         id: "02",
@@ -793,6 +814,7 @@ export default class Data {
                                 field_is_being_edited: false
                             },
                         ],
+                        usage_notes: [],
                     },
                     {
                         id: "03",
@@ -852,6 +874,7 @@ export default class Data {
                                 field_is_being_edited: false
                             },
                         ],
+                        usage_notes: [],
                     },
                     {
                         id: "04",
@@ -911,12 +934,15 @@ export default class Data {
                                 field_is_being_edited: false
                             },
                         ],
+                        usage_notes: [],
                     }
                 ]
             },
             { 
                 name: "Personal crime by accomodation",
-                lastUpdated: "Updated 29 April 2018 at 10:45am",
+                lastUpdated: "Edited 29 April 2018 at 10:45am",
+                breadcrumbs: "Home > People, population and community > Crime and justice",
+                keywords:"Personal crime by accomodation Home > People, population and community > Crime and justice pca",
                 id: "pca",
                 versions: [
                     {
@@ -962,6 +988,7 @@ export default class Data {
                             },
                         ],
                         notices: [],
+                        usage_notes: [],
                     },
                     {
                         id: "02",
@@ -1021,6 +1048,7 @@ export default class Data {
                                 field_is_being_edited: false
                             },
                         ],
+                        usage_notes: [],
                     },
                     {
                         id: "03",
@@ -1080,6 +1108,7 @@ export default class Data {
                                 field_is_being_edited: false
                             },
                         ],
+                        usage_notes: [],
                     },
                     {
                         id: "04",
@@ -1139,6 +1168,7 @@ export default class Data {
                                 field_is_being_edited: false
                             },
                         ],
+                        usage_notes: [],
                     }
                 ]
             },
@@ -1158,6 +1188,16 @@ export default class Data {
     }
 
     static getVersionMetadata(datasetId, versionId) {
+        const dataset = this.data().find(dataset => {
+            return dataset.id === datasetId 
+        })
+
+        return dataset.versions.find(version => {
+            return version.id === versionId
+        })
+    }
+
+    static getVersion(datasetId, versionId) {
         const dataset = this.data().find(dataset => {
             return dataset.id === datasetId 
         })
