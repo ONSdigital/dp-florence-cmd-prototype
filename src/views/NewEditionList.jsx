@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import '../scss/index.scss';
 import { Link } from "react-router-dom";
 import Data from "../Data"
+import Modal from "../components/Modal"
+import ConfirmEdition from "../components/ConfirmEdition"
 
 export default class NewEditionList extends Component {
     constructor(props) {
@@ -9,12 +11,44 @@ export default class NewEditionList extends Component {
 
         this.state = {
             selectedDataset: {},
+            showModal: false,
+            versionId: "0",
+            editionId: "0",
         }
+        this.handleCreateClick = this.handleCreateClick.bind(this);
+        this.handleCreateClick2 = this.handleCreateClick2.bind(this);
+        this.handleModalClose = this.handleModalClose.bind(this);
     }
 
     componentWillMount() {
         this.setState({
             selectedDataset: Data.getDatasetName(this.props.location.search.substr(12, this.props.location.search.length - 12))
+        })
+    }
+
+    handleCreateClick(event) {
+        this.setState({
+            showModal: true,
+            edition: event.target.innerHTML,
+            versionId: "0",
+            editionId: "0",
+            
+        }) 
+    }
+
+    handleCreateClick2(event) {
+        this.setState({
+            showModal: true,
+            edition: event.target.innerHTML,
+            versionId: "0",
+            editionId: "1",
+            
+        }) 
+    }
+
+    handleModalClose(){
+        this.setState({
+            showModal: false,
         })
     }
 
@@ -26,28 +60,28 @@ export default class NewEditionList extends Component {
                     <div className="margin-top--2">
                         &#9664; <a onClick={this.props.history.goBack} className="btn btn--link">Back</a>
                     </div>
-                    <h1 className="margin-top--1 margin-bottom--1">Select edition</h1>
-                    <p className="margin-bottom--1">Dataset: {datasetName}</p>
-                    <div>
-                    <details className=" margin-bottom--1" >
-                        <summary>What is this page?</summary>
-                        <ul className="margin-left--1">
-                            <li className="margin-top--1">A list of editions that are ready to be released</li>
-                            <li className="margin-top--1">Select one to check and update the metadata</li>
-                        </ul>
-                    </details>
-                    </div>
+                    <h1 className="margin-top--1 margin-bottom--1">Publish new data</h1>
+                    <p className="margin-bottom--1"><b>Dataset:</b> {datasetName}</p>
                     <ul className="menu-list">
                         <li className="menu-list__item">
-                            <h2><Link to={`new-version${this.props.location.search}&version-id=01`}>June 2018 edition</Link></h2>
-                            <p>Never released <span className="font-color--iron">|</span> Updated today at 8:44am</p>
+                            <h2  id="0" className="btn--link" onClick={this.handleCreateClick}>June 2018 edition v1.0</h2>
+                            <p>Not released yet <br/> name-of-file-from-business-area.xlsx <br/> Updated today at 8:44am</p>
                         </li>
                         <li className="menu-list__item">
-                            <h2><Link to={`new-version${this.props.location.search}&version-id=01`}>June 2018 edition</Link></h2>
-                            <p>Never released <span className="font-color--iron">|</span> Updated yesterday at 4:48pm</p>
+                            <h2  id="1" className="btn--link" onClick={this.handleCreateClick2}>June 2018 edition v1.1</h2>
+                            <p>Not released yet <br/> name-of-file-from-business-area.xlsx <br/> Updated yesterday at 4:48pm</p>
                         </li>
                     </ul>
                 </div>
+                {this.state.showModal ? 
+                    <Modal sizeClass="grid__col-6">
+                    <ConfirmEdition
+                    datasetName={datasetName}
+                    edition={this.state.edition}
+                    location={`new-version${this.props.location.search}&version-id=${this.state.versionId}&edition-id=${this.state.editionId}`}
+                    closeModal={this.handleModalClose}/>
+                    </Modal>
+                : ""}
             </div>
         )
     }

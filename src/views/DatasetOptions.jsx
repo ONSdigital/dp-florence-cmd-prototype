@@ -27,20 +27,20 @@ export default class DatasetOptions extends Component {
                         &#9664; <a onClick={this.props.history.goBack} className="btn btn--link">Back</a>
                     </div>
                     <h1 className="margin-top--1 margin-bottom--1">Select a task</h1>
-                    <p className="margin-bottom--1">Dataset: {datasetName}</p>
+                    <p className="margin-bottom--1"><b> Dataset: </b> {datasetName}</p>
                     <ul className="menu-list">
-                        <li className="menu-list__item">
-                            <h2><Link to={`publish-version${this.props.location.search}`}>Publish a new edition</Link></h2>
-                            <p>For publishing unreleased data.</p>
-                        </li>
-                        <li className="menu-list__item">
-                            <h2><Link to={`update-version${this.props.location.search}`}>Update an old edition</Link></h2>
-                            <p>For adding alert/correction notices and updating metadata that's specific to a release.</p>
-                        </li>
                         <li className="menu-list__item">
                             <h2><Link to={`dataset-metadata${this.props.location.search}`}>Change key metadata</Link></h2>
                             <p className="margin-bottom--1">Includes title, keywords, contact details and related links.</p>
-                            <p>Editing this metadata will affect all releases of this data.</p>
+                            <p><span className="icon icon-info" style={{position: "relative" , top: 12}}></span> Editing this metadata will affect all releases of this data.</p>
+                        </li>
+                        <li className="menu-list__item">
+                            <h2><Link to={`publish-version${this.props.location.search}`}>Publish new data</Link></h2>
+                            <p>Get new data, check the metadata and publish it to the site.</p>
+                        </li>
+                        <li className="menu-list__item">
+                            <h2><Link to={`update-version${this.props.location.search}`}>Add alert</Link></h2>
+                            <p>Add an alert notice to an existing release.</p>
                         </li>
                     </ul>
                 </div>

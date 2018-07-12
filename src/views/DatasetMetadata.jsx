@@ -10,7 +10,7 @@ import RelatedLinksModal from "../components/RelatedLinksModal"
 export default class DatasetMetadata extends Component {
     constructor(props) {
         super(props)
-
+        
         this.state = {
             metadata: [
                 {
@@ -207,6 +207,8 @@ export default class DatasetMetadata extends Component {
 
     render() {
         const datasetName = this.state.selectedDataset ? this.state.selectedDataset.name : "";
+        const datasetID = this.state.selectedDataset ? this.state.selectedDataset : "";
+        
         return (
             <div className="grid grid--justify-center">
                 <div className="grid__col-xs-10 grid__col-md-8 grid__col-lg-6">
@@ -214,20 +216,47 @@ export default class DatasetMetadata extends Component {
                         &#9664; <a onClick={this.props.history.goBack} className="btn btn--link">Back</a>
                     </div>
                     <h1 className="margin-top--1 margin-bottom--1">Change key metadata</h1>
-                    <p className="margin-bottom--1">Dataset: {datasetName}</p>
+                    <p className="margin-bottom--1"><b>Dataset:</b> {datasetName}</p>
+                    <p className="margin-bottom--1"><b>ID:</b> {datasetID.id}{datasetID.versions[0].id}</p>
+                
 
-                    <div>
-                    <details className=" margin-bottom--1" >
-                        <summary>What is this page?</summary>
-                        <ul className="margin-left--1">
-                            <li className="margin-top--1">This page contains key information about the dataset</li>
-                            <li className="margin-top--1">Editing this metadata will affect all releases of this data</li>
-                        </ul>
-                    </details>
-                    </div>
 
                     <h2 className="margin-bottom--1">Metadata for this dataset</h2>
-                    <ul className="menu-list">
+                    <label className="form__label" htmlFor="title">Title</label>
+                    <textarea className="form__text-area margin-bottom--1" id="title" name="title" defaultValue={datasetName} />
+                    <label className="form__label" htmlFor="about">About this dataset</label>
+                    <textarea className="form__text-area margin-bottom--1" id="about" name="about" rows="10" defaultValue="CPIH is the most comprehensive measure of inflation. It extends CPI to include a measure of the costs associated with owning, maintaining and living in one's own home, known as owner occupiers' housing costs (OOH), along with council tax. This dataset provides CPIH time series (2005 to latest published month), allowing users to customise their own selection, view or download."/>
+                    <label className="form__label" htmlFor="keywords">Keywords</label>
+                    <textarea className="form__text-area margin-bottom--1" id="keywords" name="keywords" defaultValue="Inflation, Economy"/>
+                    <label className="form__label" htmlFor="usage-information">Usage information</label>
+                    <textarea className="form__text-area margin-bottom--1" id="usage-information" name="usage-information" defaultValue="Open Government Licence v3.0"/>
+                    <div className="margin-bottom--1">
+                        <label className="form__label">National Statistic</label>
+                        <input style={{marginRight: 8}} id="national-statistic-1" name="national-statistic" type="radio" value="yes" checked="checked"></input>
+                        <label className="margin-right--2" htmlFor="national-statistic-1">Yes</label>
+                        <input style={{marginRight: 8}} id="national-statistic-2" name="national-statistic" type="radio" value="no" ></input>
+                        <label htmlFor="national-statistic-2">No</label>
+                    </div>
+                    
+                    <label className="form__label margin-bottom--1">Release frequency</label>
+                    <div className="margin-bottom--1"><input style={{marginRight: 8}} id="release-frequency-1" name="release-frequency" type="radio" value="Weekly" ></input>
+                    <label htmlFor="release-frequency-1">Weekly</label></div>
+                    <div className="margin-bottom--1"><input style={{marginRight: 8}} id="release-frequency-2" name="release-frequency" type="radio" value="Monthly" checked="checked"></input>
+                    <label htmlFor="release-frequency-2">Monthly</label></div>
+                    <div className="margin-bottom--1"><input style={{marginRight: 8}} id="release-frequency-3" name="release-frequency" type="radio" value="Quarterly" ></input>
+                    <label htmlFor="release-frequency-3">Quarterly</label></div>
+                    <div className="margin-bottom--1"><input style={{marginRight: 8}} id="release-frequency-4" name="release-frequency" type="radio" value="Annually" ></input>
+                    <label htmlFor="release-frequency-4">Annually</label></div>
+                    
+                    <h2 className="margin-bottom--1">Contact details</h2>
+                    <label className="form__label" htmlFor="name">Contact name</label>
+                    <textarea className="form__text-area margin-bottom--1" id="name" name="name" defaultValue="James Tucker"/>
+                    <label className="form__label" htmlFor="email">Contact email</label>
+                    <textarea className="form__text-area margin-bottom--1" id="email" name="email" defaultValue="cpi@ons.gov.uk"/>
+                    <label className="form__label" htmlFor="telephone">Contact telephone</label>
+                    <textarea className="form__text-area margin-bottom--1" id="telephone" name="telephone" defaultValue="+44 (0)1633 456900"/>
+                    
+                    {/* <ul className="menu-list">
                         {this.state.metadata.map((field, index) => {
                                 return (
                                     <EditableField 
@@ -243,9 +272,9 @@ export default class DatasetMetadata extends Component {
                                     />
                                 )
                         })}
-                    </ul>
+                    </ul> */}
 
-                    <h2 className="margin-top--3 margin-bottom--1">Contact details</h2>
+                    {/* <h2 className="margin-top--3 margin-bottom--1">Contact details</h2>
                     <ul className="menu-list">
                         {this.state.contact_details.map((field, index) => {
                                 return (
@@ -262,7 +291,7 @@ export default class DatasetMetadata extends Component {
                                     />
                                 )
                         })}
-                    </ul>
+                    </ul> */}
 
                     <h2 className="margin-top--3 margin-bottom--1">Related links</h2>
                     <ul className="menu-list margin-bottom--1">
@@ -285,7 +314,8 @@ export default class DatasetMetadata extends Component {
                     </ul>
                     <p className="btn btn--link margin-bottom--3" onClick={this.handleCreateClick}>Add a related link</p>
                     <div>
-                        <Link to={"preview"} className="btn btn--primary margin-bottom--5">Save and continue</Link>
+                        <a className="btn btn--primary margin-right--1" href="#">Save</a>
+                        <Link to={"preview"} className="btn btn--positive margin-bottom--5">Save and continue</Link>
                     </div>
                 </div>
                 {this.state.showModal ? 

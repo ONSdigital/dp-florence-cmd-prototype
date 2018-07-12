@@ -5,9 +5,9 @@ import Data from "../Data"
 import EditableField from "../components/EditableField"
 import EditableModalField from "../components/EditableModalField"
 import Modal from "../components/Modal"
-import NoticesModal from "../components/NoticesModal"
+import AlertsNoticesModal from "../components/AlertsNoticesModal"
 
-export default class VersionMetadata extends Component {
+export default class AlertVersionMetadata extends Component {
     constructor(props) {
         super(props)
 
@@ -68,18 +68,14 @@ export default class VersionMetadata extends Component {
                     field_is_being_edited: false
                 },
             ],
-            usage_notes: [],
             content_to_edit: {},
             showModal: false,
-            groups: "",
             selectedDataset: {}
         }
 
         this.handleEditClick = this.handleEditClick.bind(this);
         this.handleSaveClick = this.handleSaveClick.bind(this);
         this.handleCreateClick = this.handleCreateClick.bind(this);
-        this.handleCreateDimensionClick = this.handleCreateDimensionClick.bind(this);
-        this.handleCreateNotesClick = this.handleCreateNotesClick.bind(this);
         this.handleDeleteClick = this.handleDeleteClick.bind(this);
         this.handleModalEditClick = this.handleModalEditClick.bind(this);
         this.handleModalCancelClick = this.handleModalCancelClick.bind(this);
@@ -93,16 +89,6 @@ export default class VersionMetadata extends Component {
         this.setState({
             selectedDataset: Data.getDatasetName(datasetId),
             ...Data.getVersionMetadata(datasetId, versionId)
-        })
-    }
-
-    versionId() {
-        const url = new URL(window.location.href);
-        const datasetId = url.searchParams.get("dataset-id");
-        const versionId = url.searchParams.get("version-id");
-        this.setState({
-            selectedDataset: Data.getDatasetName(datasetId),
-            ...Data.getVersion(datasetId, versionId)
         })
     }
 
@@ -134,23 +120,7 @@ export default class VersionMetadata extends Component {
 
     handleCreateClick() {
         this.setState({
-            showModal: true,
-            groups: "notices"
-        })
-        
-    }
-
-    handleCreateDimensionClick() {
-        this.setState({
-            showModal: true,
-            groups: "in_this_dataset"
-        })
-    }
-
-    handleCreateNotesClick() {
-        this.setState({
-            showModal: true,
-            groups: "usage_notes"
+            showModal: true
         })
     }
 
@@ -216,51 +186,24 @@ export default class VersionMetadata extends Component {
     }
 
     render() {
-        const test = this.versionId ? this.versionId : "";
-        const groups = "";
         const url = new URL(window.location.href);
         const datasetName = this.state.selectedDataset ? this.state.selectedDataset.name : "";
         const datasetID = this.state.selectedDataset ? this.state.selectedDataset : "";
         const datasetVersions = url.searchParams.get("version-id");
-        const datasetEdition = url.searchParams.get("edition-id");
+        const editionVersions = url.searchParams.get("edition-id");
+        
         return (
             <div className="grid grid--justify-center">
                 <div className="grid__col-xs-10 grid__col-md-8 grid__col-lg-6">
                     <div className="margin-top--2">
                         &#9664; <a onClick={this.props.history.goBack} className="btn btn--link">Back</a>
                     </div>
-                    <h1 className="margin-top--1 margin-bottom--1">Edit edition metadata</h1>
-                    <p className="margin-bottom--1"><b>Dataset: </b> {datasetName}<br/>
-                    <b>Edition: </b> {datasetID.versions[datasetVersions].metadata[0].field_value}<br/>
-                    <b>Version: </b> 1.{datasetEdition}</p>
+                    <h1 className="margin-top--1 margin-bottom--1">Edit alerts</h1>
+                    <p className="margin-bottom--1"><b>Dataset:</b> {datasetName}<br/>
+                    <b>Edition: </b> {datasetID.versions[datasetVersions].metadata[0].field_value} v1.{editionVersions}</p>
                     
-                    <h2 className="margin-bottom--1">Dates</h2>
-                    
-                    <label className="form__label" htmlFor="title">Release date</label>
-                    <textarea className="form__text-area margin-bottom--1" id="title" name="title" defaultValue={datasetID.versions[datasetVersions].metadata[1].field_value} />
-                    <label className="form__label" htmlFor="title">Next release date</label>
-                    <textarea className="form__text-area margin-bottom--1" id="title" name="title" defaultValue={datasetID.versions[datasetVersions].metadata[2].field_value} />
-                    
-                    {/* <ul className="menu-list">
-                        {this.state.metadata.map((field, index) => {
-                                return (
-                                    <EditableField 
-                                        key={field.field_id}
-                                        index={index}
-                                        id={field.field_id} 
-                                        title={field.field_title} 
-                                        value={field.field_value} 
-                                        is_being_edited={field.field_is_being_edited}
-                                        group={"metadata"}
-                                        handleEditClick={this.handleEditClick}
-                                        handleSaveClick={this.handleSaveClick}
-                                    />
-                                )
-                        })}
-                    </ul> */}
 
-                    <h2 className="margin-top--3 margin-bottom--1">Notices</h2>
-                    <p className="margin-bottom--1">Alerts, correction or change summary notices.</p>
+                    <h2 className="margin-top--3 margin-bottom--1">Alert notices</h2>
                     <ul className="menu-list margin-bottom--1">
                         {this.state.notices.map((field, index) => {
                                 return (
@@ -279,50 +222,9 @@ export default class VersionMetadata extends Component {
                                 )
                         })}
                     </ul>
-                    <p className="btn btn--link" onClick={this.handleCreateClick}>Add a notice</p>
+                    <p className="btn btn--link" onClick={this.handleCreateClick}>Add a alert notices</p>
 
-                    <h2 className="margin-top--3 margin-bottom--1">Dimension descriptions</h2>
-                    <p className="margin-bottom--1">Descriptions for the dataset dimensions, for example geography or time period.</p>
-                    <ul className="menu-list margin-bottom--3">
-                        {this.state.in_this_dataset.map((field, index) => {
-                                return (
-                                    <EditableField 
-                                        key={field.field_id}
-                                        index={index}
-                                        id={field.field_id} 
-                                        title={field.field_title} 
-                                        value={field.field_value} 
-                                        is_being_edited={field.field_is_being_edited}
-                                        group={"in_this_dataset"}
-                                        handleEditClick={this.handleEditClick}
-                                        handleSaveClick={this.handleSaveClick}
-                                    />
-                                )
-                        })}
-                    </ul>
-                    <p className="btn btn--link" onClick={this.handleCreateDimensionClick}>Add a dimension description</p>
-
-                    <h2 className="margin-top--3 margin-bottom--1">Usage notes</h2>
-                    <p className="margin-bottom--1">Usage notes appear in the spreadsheet download.</p>
-                    <ul className="menu-list margin-bottom--1">
-                        {this.state.usage_notes.map((field, index) => {
-                                return (
-                                    <EditableModalField
-                                        key={field.field_id}
-                                        index={index}
-                                        id={field.field_id} 
-                                        type={field.field_type} 
-                                        value={field.field_value} 
-                                        is_being_edited={field.field_is_being_edited}
-                                        group={"usage_notes"}
-                                        handleEditClick={this.handleModalEditClick}
-                                        handleSaveClick={this.handleSaveClick}
-                                        handleDeleteClick={this.handleDeleteClick}
-                                    />
-                                )
-                        })}
-                    </ul>
-                    <p className="btn btn--link" onClick={this.handleCreateNotesClick}>Add a usage note</p>
+                    
 
                     <div>
                         <a className="btn btn--primary margin-right--1" href="#">Save</a>
@@ -331,8 +233,8 @@ export default class VersionMetadata extends Component {
                 </div>
                 {this.state.showModal ? 
                     <Modal sizeClass="grid__col-3">
-                        <NoticesModal 
-                            group={this.state.groups} 
+                        <AlertsNoticesModal 
+                            group="notices" 
                             contentToEdit={this.state.content_to_edit} 
                             onSave={this.handleModalSaveClick} 
                             onCancel={this.handleModalCancelClick}/>

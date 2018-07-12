@@ -1065,7 +1065,7 @@ select {
   src: url("https://cdn.ons.gov.uk/assets/fonts/roboto-slab/RobotoSlab-Light.woff") format("woff");
   /* Modern Browsers */
   font-style: normal;
-  font-weight: 300; }
+  font-weight: 400; }
 
 @font-face {
   font-family: 'Roboto Slab';
@@ -1112,7 +1112,7 @@ select {
 
 body {
   font-family: "Open Sans", sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 14px;
   line-height: 21px;
   height: 100vh; }
@@ -1170,19 +1170,19 @@ a {
 
 input {
   font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 14px;
   line-height: 22px; }
 
 textarea {
   font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 14px;
   line-height: 21px; }
 
 select {
   font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 14px;
   line-height: 22px; }
   select select:first-child {
@@ -2065,7 +2065,7 @@ details {
 
 .btn {
   font-family: 'Roboto Slab', serif;
-  border-radius: 4px;
+  border-radius: 0px;
   padding: 10px 20px;
   text-decoration: none;
   position: relative;
@@ -2084,13 +2084,13 @@ details {
     background-color: rgba(0, 0, 0, 0.2);
     top: 0;
     left: 0;
-    border-radius: 4px; }
+    border-radius: 0px; }
   .btn--primary, .btn--primary:visited {
     color: #F2F2F2;
     background-color: #337099; }
   .btn--positive, .btn--positive:visited {
-    color: #F2F2F2;
-    background-color: #49725D; }
+    color: #FFFFFF;
+    background-color: #0F8243; }
   .btn--warning, .btn--warning:visited {
     color: #F2F2F2;
     background-color: #6D272B; }
