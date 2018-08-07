@@ -53,20 +53,7 @@ export default class VersionMetadata extends Component {
                 },
             ],
             notices: [
-                {
-                    field_id: "11",
-                    field_type: "Alert",
-                    field_date: "2018-05-22",
-                    field_value: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
-                    field_is_being_edited: false
-                },
-                {
-                    field_id: "12",
-                    field_type: "Correction",
-                    field_date: "2018-05-13",
-                    field_value: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
-                    field_is_being_edited: false
-                },
+                
             ],
             usage_notes: [],
             content_to_edit: {},
