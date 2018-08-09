@@ -64,11 +64,11 @@ export default class NewEditionList extends Component {
                     <p className="margin-bottom--1"><b>Dataset:</b> {datasetName}</p>
                     <ul className="menu-list">
                         <li className="menu-list__item">
-                            <h2  id="0" className="btn--link" onClick={this.handleCreateClick}>June 2018 edition v1.0</h2>
+                            <h2  id="0" className="btn--link" onClick={this.handleCreateClick}>June 2018 edition</h2>
                             <p>Not released yet <br/> june2018_v1.xlsx <br/> Updated today at 8:44am</p>
                         </li>
                         <li className="menu-list__item">
-                            <h2  id="1" className="btn--link" onClick={this.handleCreateClick2}>June 2018 edition v1.1</h2>
+                            <h2  id="1" className="btn--link" onClick={this.handleCreateClick2}>June 2018 edition</h2>
                             <p>Not released yet <br/> june2018_v1-1.xlsx <br/> Updated yesterday at 4:48pm</p>
                         </li>
                     </ul>
