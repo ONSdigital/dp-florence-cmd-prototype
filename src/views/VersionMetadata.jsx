@@ -65,7 +65,6 @@ export default class VersionMetadata extends Component {
         this.handleEditClick = this.handleEditClick.bind(this);
         this.handleSaveClick = this.handleSaveClick.bind(this);
         this.handleCreateClick = this.handleCreateClick.bind(this);
-        this.handleCreateDimensionClick = this.handleCreateDimensionClick.bind(this);
         this.handleCreateNotesClick = this.handleCreateNotesClick.bind(this);
         this.handleDeleteClick = this.handleDeleteClick.bind(this);
         this.handleModalEditClick = this.handleModalEditClick.bind(this);
@@ -125,13 +124,6 @@ export default class VersionMetadata extends Component {
             groups: "notices"
         })
         
-    }
-
-    handleCreateDimensionClick() {
-        this.setState({
-            showModal: true,
-            groups: "in_this_dataset"
-        })
     }
 
     handleCreateNotesClick() {
@@ -287,7 +279,6 @@ export default class VersionMetadata extends Component {
                                 )
                         })}
                     </ul>
-                    <p className="btn btn--link" onClick={this.handleCreateDimensionClick}>Add a dimension description</p>
 
                     <h2 className="margin-top--3 margin-bottom--1">Usage notes</h2>
                     <p className="margin-bottom--1">Usage notes appear in the spreadsheet download.</p>
