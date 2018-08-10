@@ -6,6 +6,7 @@ import EditableField from "../components/EditableField"
 import EditableModalField from "../components/EditableModalField"
 import Modal from "../components/Modal"
 import NoticesModal from "../components/NoticesModal"
+import DimensionsModal from "../components/DimensionsModal"
 
 export default class VersionMetadata extends Component {
     constructor(props) {
@@ -36,18 +37,21 @@ export default class VersionMetadata extends Component {
                 {
                     field_id: "08",
                     field_title: "Good and services",
+                    field_type: "Good and services",
                     field_value: "No description provided.",
                     field_is_being_edited: false
                 },
                 {
                     field_id: "09",
                     field_title: "Geographic areas",
+                    field_type: "Geographic areas",
                     field_value: "Provides data at national level for the United Kingdom only. No breakdown of this data to smaller areas is available.",
                     field_is_being_edited: false
                 },
                 {
                     field_id: "10",
                     field_title: "Time",
+                    field_type: "Time",
                     field_value: "Includes the complete available monthly time series for CPIH. Yearly and quarterly data are also available from the main ONS website.",
                     field_is_being_edited: false
                 },
@@ -58,6 +62,7 @@ export default class VersionMetadata extends Component {
             usage_notes: [],
             content_to_edit: {},
             showModal: false,
+            modalType: "",
             groups: "",
             selectedDataset: {}
         }
@@ -121,6 +126,7 @@ export default class VersionMetadata extends Component {
     handleCreateClick() {
         this.setState({
             showModal: true,
+            modalType: "notices",
             groups: "notices"
         })
         
@@ -129,6 +135,7 @@ export default class VersionMetadata extends Component {
     handleCreateNotesClick() {
         this.setState({
             showModal: true,
+            modalType: "usage note",
             groups: "usage_notes"
         })
     }
@@ -140,9 +147,12 @@ export default class VersionMetadata extends Component {
         field.field_is_being_edited = true;
         const newState = this.state[group]
         newState.splice(index, 1, field);
+        const modalType = group === "in_this_dataset" ? "dimension" : ""
         this.setState({
             [group]: newState,
+            groups: group,
             content_to_edit: {index: index, ...field},
+            modalType: modalType,
             showModal: true
         });
     }
@@ -153,6 +163,7 @@ export default class VersionMetadata extends Component {
             const id = (this.state.metadata.length + this.state.in_this_dataset.length + this.state.notices.length + 1).toString();
             const newItem = {
                 field_id: id,
+                field_name: type,
                 field_type: type,
                 field_value: value,
                 field_date: date,
@@ -165,6 +176,7 @@ export default class VersionMetadata extends Component {
                 return field.field_id === isEditing.field_id
             })
             field.field_is_being_edited = false;
+            field.field_name = type;
             field.field_type = type;
             field.field_value = value;
             field.field_date = date;
@@ -181,6 +193,7 @@ export default class VersionMetadata extends Component {
 
     handleModalCancelClick() {
         this.setState({
+            modalType: "",
             showModal: false,
             content_to_edit: {}
         })
@@ -195,8 +208,6 @@ export default class VersionMetadata extends Component {
     }
 
     render() {
-        const test = this.versionId ? this.versionId : "";
-        const groups = "";
         const url = new URL(window.location.href);
         const datasetName = this.state.selectedDataset ? this.state.selectedDataset.name : "";
         const datasetID = this.state.selectedDataset ? this.state.selectedDataset : "";
@@ -216,9 +227,9 @@ export default class VersionMetadata extends Component {
                     <h2 className="margin-bottom--1">Dates</h2>
                     
                     <label className="form__label" htmlFor="title">Release date</label>
-                    <textarea className="form__text-area margin-bottom--1" id="title" name="title" defaultValue={datasetID.versions[datasetVersions].metadata[1].field_value} />
+                    <textarea style={{"height":"50px", "border": "1px solid"}} className="form__text-area margin-bottom--1 input" id="title" name="title" defaultValue={datasetID.versions[datasetVersions].metadata[1].field_value} />
                     <label className="form__label" htmlFor="title">Next release date</label>
-                    <textarea className="form__text-area margin-bottom--1" id="title" name="title" defaultValue={datasetID.versions[datasetVersions].metadata[2].field_value} />
+                    <textarea style={{"height":"50px", "border": "1px solid"}} className="form__text-area margin-bottom--1 input" id="title" name="title" defaultValue={datasetID.versions[datasetVersions].metadata[2].field_value} />
                     
                     {/* <ul className="menu-list">
                         {this.state.metadata.map((field, index) => {
@@ -265,16 +276,18 @@ export default class VersionMetadata extends Component {
                     <ul className="menu-list margin-bottom--3">
                         {this.state.in_this_dataset.map((field, index) => {
                                 return (
-                                    <EditableField 
+                                    <EditableModalField
                                         key={field.field_id}
                                         index={index}
                                         id={field.field_id} 
-                                        title={field.field_title} 
+                                        type={field.field_type} 
                                         value={field.field_value} 
                                         is_being_edited={field.field_is_being_edited}
                                         group={"in_this_dataset"}
-                                        handleEditClick={this.handleEditClick}
+                                        handleEditClick={this.handleModalEditClick}
                                         handleSaveClick={this.handleSaveClick}
+                                        handleDeleteClick={this.handleDeleteClick}
+                                        showDeleteOption={false}
                                     />
                                 )
                         })}
@@ -302,6 +315,9 @@ export default class VersionMetadata extends Component {
                     </ul>
                     <p className="btn btn--link" onClick={this.handleCreateNotesClick}>Add a usage note</p>
 
+                    <h2 className="margin-top--3 margin-bottom--1">What's changed in this release section?</h2>
+                    <textarea style={{"height":"250px", "border": "1px solid"}} className="form__text-area margin-bottom--1 input" id="title" name="title" />
+
                     <div>
                         <a className="btn btn--primary margin-right--1" href="#">Save</a>
                         <Link to={"preview"} className="btn btn--positive margin-bottom--5 margin-top--3">Save and continue</Link>
@@ -309,11 +325,19 @@ export default class VersionMetadata extends Component {
                 </div>
                 {this.state.showModal ? 
                     <Modal sizeClass="grid__col-3">
-                        <NoticesModal 
-                            group={this.state.groups} 
-                            contentToEdit={this.state.content_to_edit} 
-                            onSave={this.handleModalSaveClick} 
-                            onCancel={this.handleModalCancelClick}/>
+                        {this.state.modalType === "notices" ? 
+                            <NoticesModal 
+                                group={this.state.groups} 
+                                contentToEdit={this.state.content_to_edit} 
+                                onSave={this.handleModalSaveClick} 
+                                onCancel={this.handleModalCancelClick} />
+                        :   <DimensionsModal 
+                                group={this.state.groups} 
+                                modalName={this.state.modalType}
+                                contentToEdit={this.state.content_to_edit} 
+                                onSave={this.handleModalSaveClick} 
+                                onCancel={this.handleModalCancelClick} />
+                        }
                     </Modal>
                 : ""}
             </div>

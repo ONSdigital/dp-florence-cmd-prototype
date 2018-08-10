@@ -42,11 +42,16 @@ export default class EditableModalField extends Component {
                 </div>
                 <div className="grid__col-lg-2">
                     <p style={{"textAlign": "right"}}>
-                        <span className="btn--link" onClick={this.handleEditClick}>Edit</span> |
-                        <span className="btn--link" onClick={this.handleDeleteClick}>Delete</span>
+                        <span className="btn--link" onClick={this.handleEditClick}>Edit</span> 
+                        {this.props.showDeleteOption ? "|" : ""}
+                        {this.props.showDeleteOption ? <span className="btn--link" onClick={this.handleDeleteClick}>Delete</span> : null}
                     </p>  
                 </div>
             </li>
         )
     }
+}
+
+EditableModalField.defaultProps = {
+    showDeleteOption: true
 }
